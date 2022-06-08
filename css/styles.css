@@ -158,6 +158,8 @@ img {
 /* Герой index.html*/
 
 .hero {
+  max-width: 1600px;
+  height: 600px;
   color: var(--prime-bcg);
   background-color: var(--hero-bcg);
   background-image: linear-gradient(rgba(47, 48, 58, 0.4), rgba(47, 48, 58, 0.4)),
@@ -165,6 +167,7 @@ img {
   background-repeat: no-repeat;
   background-size: cover;
   text-align: center;
+  margin: 0 auto;
   padding-top: 200px;
   padding-bottom: 200px;
 }
@@ -237,24 +240,21 @@ img {
 
 .features .title,
 .footer-title,
-.work .item .title {
+.work .item .description {
   font-size: 14px;
   font-weight: 700;
   line-height: 1.14;
   text-transform: uppercase;
 }
 
-.work-item-title .title {
+.work .description {
+  position: absolute;
+  width: 370px;
+  transform: translateY(-70px);
   color: var(--prime-bcg);
   background-color: rgba(47, 48, 58, 0.8);
   text-align: center;
   padding: 27px 82px 27px 83px;
-}
-
-.work-item-title {
-  position: absolute;
-  width: 370px;
-  transform: translateY(-70px);
 }
 
 .work .item {
@@ -415,7 +415,8 @@ img {
   transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.works .list:hover {
+.works .list:hover,
+.works .list:focus {
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
     1px 4px 6px rgba(0, 0, 0, 0.16);
   cursor: pointer;
@@ -450,11 +451,13 @@ img {
   overflow: hidden;
 }
 
-.works .list:hover .works-overlay::before {
+.works .list:hover .works-overlay::before,
+.works .list:focus .works-overlay::before {
   transform: translateY(0);
 }
 
-.works .list:hover .overlay {
+.works .list:hover .overlay,
+.works .list:focus .overlay {
   transform: translateY(-100%);
 }
 
@@ -701,7 +704,6 @@ transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1), border 250ms cubic-bezier(0
   height: 50px;
   background-color: transparent;
   color: var(--small-text);
-  outline: transparent;
   border: 1px solid rgba(255, 255, 255, 0.3);
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.15));
   border-radius: 4px;
@@ -825,14 +827,12 @@ transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1), border 250ms cubic-bezier(0
   border-radius: 4px;
 }
 
-.icon-on-input:hover .form-input,
-.icon-on-input:focus .form-input {
+.icon-on-input:focus-within > .form-input {
   border: 1px solid var(--accent);
   cursor: pointer;
 }
 
-.icon-on-input:hover .icon-data,
-.icon-on-input:focus .icon-data {
+.icon-on-input:focus-within > .icon-data {
   fill: var(--accent);
 }
 
@@ -849,7 +849,7 @@ transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1), border 250ms cubic-bezier(0
 .comment {
   padding-top: 12px;
   padding-left: 16px;
-  font-size: 12px;
+  font-size: 14px;
   line-height: 1.17;
   letter-spacing: 0.01em;
   color: rgba(117, 117, 117, 0.5);
@@ -857,6 +857,11 @@ transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1), border 250ms cubic-bezier(0
   border: 1px solid rgba(33, 33, 33, 0.2);
   border-radius: 4px;
   resize: none;
+}
+
+.comment:focus {
+  border: 1px solid var(--accent);
+  color: var(--text)
 }
 
 .checkbox-icon {
